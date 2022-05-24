@@ -33,6 +33,7 @@ public class ElasticSearchServiceImpl implements ElasticSearchService {
    private String ipAddress;
 
    public ElasticSearchServiceImpl(){
+	   /*
       JestClientFactory factory = new JestClientFactory();
       factory.setHttpClientConfig(new HttpClientConfig
               .Builder(getIpAddress())
@@ -43,6 +44,18 @@ public class ElasticSearchServiceImpl implements ElasticSearchService {
               .maxTotalConnection(60)
                         .build());
       client = factory.getObject();
+	  */
+	  
+	  ///
+	  
+	   JestClientFactory factory = new JestClientFactory();
+    factory.setHttpClientConfig(
+      new HttpClientConfig.Builder("http://localhost:9200")
+        .multiThreaded(true)
+        .defaultMaxTotalConnectionPerRoute(4)
+        .maxTotalConnection(60)
+        .build());
+    client = factory.getObject();
    }
 
    @Override

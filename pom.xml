@@ -7,7 +7,8 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.4.1.RELEASE</version>
+        <!-- <version>1.4.1.RELEASE</version> -->
+		<version>2.1.0.RELEASE</version>
     </parent>
 
     <groupId>com.github.chen0040</groupId>
@@ -17,13 +18,14 @@
     <properties>
         <!-- maven -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <java.version>1.8</java.version>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <java.version>11</java.version>
         <findbugs.version>3.0.2</findbugs.version>
 
         <!-- utility -->
-        <lombok.version>1.16.6</lombok.version>
+        <!-- <lombok.version>1.16.6</lombok.version> -->
+		<lombok.version>1.18.2</lombok.version>
         <spring-boot-maven-plugin.version>1.4.1.RELEASE</spring-boot-maven-plugin.version>
         <surefire.version>2.19</surefire.version>
 
@@ -289,6 +291,11 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
+		
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId> 
+		</dependency>
 
 
         <!-- logging -->
@@ -373,6 +380,21 @@
             <artifactId>pdfbox</artifactId>
             <version>2.0.5</version>
         </dependency>
+		
+		    <!-- API, java.xml.bind module -->
+    <dependency>
+        <groupId>jakarta.xml.bind</groupId>
+        <artifactId>jakarta.xml.bind-api</artifactId>
+        <version>2.3.2</version>
+    </dependency>
+
+    <!-- Runtime, com.sun.xml.bind module -->
+    <dependency>
+        <groupId>org.glassfish.jaxb</groupId>
+        <artifactId>jaxb-runtime</artifactId>
+        <version>2.3.2</version>
+    </dependency>
+		
 
 
     </dependencies>
@@ -425,7 +447,9 @@
                                         implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
                                 <transformer
                                         implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>com.github.cschen1205.tensorflow.web.WebApplication</mainClass>
+                                    <!-- <mainClass>com.github.cschen1205.tensorflow.web.WebApplication</mainClass> -->
+									<mainClass>com.github.chen0040.pdf_search.PdfSearchEngineApp</mainClass>
+									
                                 </transformer>
                             </transformers>
                         </configuration>
